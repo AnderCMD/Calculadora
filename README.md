@@ -3,8 +3,8 @@
 _Desafio basico de una calculadora basica con las operaciones principales de suma, resta, multiplicacion, division y porcentaje_
 
 ## Despliegue 📦
-
-[Calculadora](https://andercmd.github.io/Calculadora/)
+_Puedes visitar este proyecto en el siguiente enlace_
+[Visitar](https://andercmd.github.io/Calculadora/)
 
 ## Construido con 🛠️
 

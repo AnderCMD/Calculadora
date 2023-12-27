@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <!-- Metas -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Titulo & Icono -->
+    <title>Calculadora Basica</title>
+    <link rel="shortcut icon" href="/Resources/Icons/Icono-Blanco.icon" type="image/x-icon">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="/Resources/FontAwesome6/css/all.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/CSS/Inicio.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="Logo">
+            <img src="/Resources/Icons/Logo-Blanco.png" alt="Logo">
+        </div>
+        <div class="Redes">
+            <a href="https://github.com/AnderCMD"><i class="fa-brands fa-github"></i></a>
+        </div>
+    </header>
+    
+    <!-- Calculadora -->
+    <div class="Calculadoras">
+        <form name="Calculadora">
+            <input type="text" class="Resultado" name="Resultado" id="Resultado" placeholder="0" disabled>
+            <div class="Teclas">
+                <input type="button" value="C" class="Clear" onclick="Resultado.value = ''">
+                <input type="button" value="↶"  onclick="Calculadora.Resultado.value = Calculadora.Resultado.value.slice(0, -1)">
+                <input type="button" value="/" onclick="Resultado.value += '/'">
+                <input type="button" value="x" onclick="Resultado.value += '*'">
+                <input type="button" value="7" onclick="Resultado.value += '7'">
+                <input type="button" value="8" onclick="Resultado.value += '8'">
+                <input type="button" value="9" onclick="Resultado.value += '9'">
+                <input type="button" value="-" onclick="Resultado.value += '-'">
+                <input type="button" value="4" onclick="Resultado.value += '4'">
+                <input type="button" value="5" onclick="Resultado.value += '5'">
+                <input type="button" value="6" onclick="Resultado.value += '6'">
+                <input type="button" value="+" onclick="Resultado.value += '+'">
+                <input type="button" value="1" onclick="Resultado.value += '1'">
+                <input type="button" value="2" onclick="Resultado.value += '2'">
+                <input type="button" value="3" onclick="Resultado.value += '3'">
+                <input type="button" value="0" class="Cero" onclick="Resultado.value += '0'">
+                <input type="button" value="." onclick="Resultado.value += '.'">
+                <input type="button" value="=" class="Igual" onclick="Calcular()">
+            </div>
+        </form>
+    </div>
+    
+    <!-- Footer --> 
+    <footer>
+        <p>© Copyright 2023 | <a href="https://github.com/AnderCMD">AnderCMD</a></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/JavaScript/CaLculadora.js"></script>
+</body>
+</html>

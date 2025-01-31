@@ -50,7 +50,7 @@ Este proyecto ha sido realizado por mí. Si tienes alguna sugerencia o mejora, n
 
 ## Autores ✒️
 
-* **Ander González** - *Trabajo Inicial* - [AnderCMD](https://github.com/AnderCMD)
+* **Ander González** - *Ingeniero en Software* - [AnderCMD](https://github.com/AnderCMD)
 
 ## Licencia 📄
 

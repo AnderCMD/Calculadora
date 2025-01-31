@@ -16,7 +16,7 @@
 }
 
 body {
-    background: url('https://github.com/AnderCMD/Calculadora/blob/main/Resources/Backgrounds/cool-background.png?raw=true') no-repeat center center fixed;
+    background: url('../Resources/Backgrounds/cool-background.png') no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -24,7 +24,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100dvh;
+    height: 100vh;
 }
 
 /* Header */

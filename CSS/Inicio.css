@@ -16,11 +16,15 @@
 }
 
 body {
-    background-color: var(--Color-1);
-    min-height: 100vh;
+    background: url('/Resources/Backgrounds/cool-background.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.Contenedor {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 100dvh;
 }
 
 /* Header */
@@ -68,10 +72,10 @@ header .Redes i {
     justify-content: center;
     align-items: center;
     width: 25%;
-    background-color: var(--Color-2);
     border-radius: 1em;
     padding: 1em;
     box-shadow: 0 0 .5em var(--Color-3);
+    background-color: var(--Color-2);
 }
 
 .Calculadoras form input.Resultado {
@@ -157,13 +161,13 @@ footer a:hover {
         width: 20%;
     }
 
-    .Calculadora form {
+    .Calculadoras form {
         width: 50%;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .Calculadora form {
+    .Calculadoras form {
         width: 65%;
     }
 }
@@ -173,8 +177,8 @@ footer a:hover {
         width: 40%;
     }
 
-    .Calculadora form {
-        width: 95%;
+    .Calculadoras form {
+        width: 100%;
     }
 
     footer {

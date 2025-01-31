@@ -13,49 +13,59 @@
     <link rel="stylesheet" href="CSS/Inicio.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="Logo">
-            <img src="Resources/Icons/Logo-Blanco.png" alt="Logo">
-        </div>
-        <div class="Redes">
-            <a href="https://github.com/AnderCMD"><i class="fa-brands fa-github"></i></a>
-        </div>
-    </header>
-    
-    <!-- Calculadora -->
-    <div class="Calculadoras">
-        <form name="Calculadora">
-            <input type="text" class="Resultado" name="Resultado" id="Resultado" placeholder="0" disabled>
-            <div class="Teclas">
-                <input type="button" value="C" class="Clear" onclick="Resultado.value = ''">
-                <input type="button" value="↶"  onclick="Calculadora.Resultado.value = Calculadora.Resultado.value.slice(0, -1)">
-                <input type="button" value="/" onclick="Resultado.value += '/'">
-                <input type="button" value="x" onclick="Resultado.value += '*'">
-                <input type="button" value="7" onclick="Resultado.value += '7'">
-                <input type="button" value="8" onclick="Resultado.value += '8'">
-                <input type="button" value="9" onclick="Resultado.value += '9'">
-                <input type="button" value="-" onclick="Resultado.value += '-'">
-                <input type="button" value="4" onclick="Resultado.value += '4'">
-                <input type="button" value="5" onclick="Resultado.value += '5'">
-                <input type="button" value="6" onclick="Resultado.value += '6'">
-                <input type="button" value="+" onclick="Resultado.value += '+'">
-                <input type="button" value="1" onclick="Resultado.value += '1'">
-                <input type="button" value="2" onclick="Resultado.value += '2'">
-                <input type="button" value="3" onclick="Resultado.value += '3'">
-                <input type="button" value="0" class="Cero" onclick="Resultado.value += '0'">
-                <input type="button" value="." onclick="Resultado.value += '.'">
-                <input type="button" value="=" class="Igual" onclick="Calcular()">
+    <section class="Contenedor">
+        <!-- Header -->
+        <header>
+            <div class="Logo">
+                <img src="Resources/Icons/Logo-Blanco.png" alt="Logo">
             </div>
-        </form>
-    </div>
-    
-    <!-- Footer --> 
-    <footer>
-        <p>© Copyright 2023 | <a href="https://github.com/AnderCMD">AnderCMD</a></p>
-    </footer>
-
+            <div class="Redes">
+                <a href="https://github.com/AnderCMD"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </header>
+        
+        <!-- Calculadora -->
+        <div class="Calculadoras">
+            <form name="Calculadora">
+                <input type="text" class="Resultado" name="Resultado" id="Resultado" placeholder="0" disabled>
+                <div class="Teclas">
+                    <input type="button" value="C" class="Clear" onclick="Resultado.value = ''">
+                    <input type="button" value="←" onclick="Calculadora.Resultado.value = Calculadora.Resultado.value.slice(0, -1)">
+                    <input type="button" value="÷" onclick="Resultado.value += '÷'">
+                    <input type="button" value="×" onclick="Resultado.value += '×'">
+                    <input type="button" value="7" onclick="Resultado.value += '7'">
+                    <input type="button" value="8" onclick="Resultado.value += '8'">
+                    <input type="button" value="9" onclick="Resultado.value += '9'">
+                    <input type="button" value="-" onclick="Resultado.value += '-'">
+                    <input type="button" value="4" onclick="Resultado.value += '4'">
+                    <input type="button" value="5" onclick="Resultado.value += '5'">
+                    <input type="button" value="6" onclick="Resultado.value += '6'">
+                    <input type="button" value="+" onclick="Resultado.value += '+'">
+                    <input type="button" value="1" onclick="Resultado.value += '1'">
+                    <input type="button" value="2" onclick="Resultado.value += '2'">
+                    <input type="button" value="3" onclick="Resultado.value += '3'">
+                    <input type="button" value="0" class="Cero" onclick="Resultado.value += '0'">
+                    <input type="button" value="." onclick="Resultado.value += '.'">
+                    <input type="button" value="=" class="Igual" onclick="Calcular()">
+                </div>
+            </form>
+        </div>
+        
+        <!-- Footer --> 
+        <footer>
+            <p>Funcion de cambio de año</p>
+        </footer>
+    </section>
+        
     <!-- Scripts -->
+
+    <!-- Cambiar año del copyright -->
+    <script>
+        const fecha = new Date();
+        const año = fecha.getFullYear();
+        document.querySelector('footer p').innerHTML = `© 2023 - ${año} | <a href="https://github.com/AnderCMD" target="_blank">AnderCMD</a>`;
+    </script>
+
     <script src="JavaScript/Calculadora.js"></script>
 </body>
 </html>

@@ -29,10 +29,10 @@ This application conforms to modern frontend standards:
 
 ```
 ├── index.html                  # Main semantic document with SEO metadata & JSON-LD
-├── CSS/
-│   └── Inicio.css              # Glassmorphic style sheet with animations and theme variables
-└── JavaScript/
-    ├── Calculadora.js          # Entry module initializing the UI controller
+├── css/
+│   └── styles.css              # Glassmorphic style sheet with animations and theme variables
+└── js/
+    ├── main.js                 # Entry module initializing the UI controller
     └── modules/
         ├── calculator-engine.js # Pure math engine (Tokenizer + Recursive Descent Parser)
         └── calculator-ui.js     # DOM controller, Event delegation, & Keyboard listener

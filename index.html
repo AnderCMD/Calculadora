@@ -1,71 +1,168 @@
 <!DOCTYPE html>
-<html lang="es-MX">
+<html lang="es">
 <head>
-    <!-- Metas -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Titulo & Icono -->
-    <title>Calculadora Basica</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>Calculadora Científica y Básica Inteligente | Online & Gratis</title>
+    <meta name="title" content="Calculadora Científica y Básica Inteligente | Online & Gratis">
+    <meta name="description" content="Calculadora científica y básica online gratis. Realiza operaciones aritméticas, funciones trigonométricas (sin, cos, tan), logaritmos, potencias, raíces y factoriales de forma segura, rápida y sin anuncios.">
+    <meta name="keywords" content="calculadora, calculadora cientifica, calculadora basica, matematicas online, calcular gratis, sin, cos, tan, log, factorial, solver gratis, calculadora de escritorio">
+    <meta name="author" content="Ander Gonzalez (AnderCMD)">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andercmd.github.io/Calculadora/">
+    <meta property="og:title" content="Calculadora Científica y Básica Inteligente | Online & Gratis">
+    <meta property="og:description" content="Una herramienta matemática moderna, rápida y segura. Cambia fácilmente entre el modo básico y científico con una interfaz premium y glassmorphic.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/AnderCMD/Calculadora/main/Resources/Icons/Logo-Blanco.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://andercmd.github.io/Calculadora/">
+    <meta property="twitter:title" content="Calculadora Científica y Básica Inteligente | Online & Gratis">
+    <meta property="twitter:description" content="Una herramienta matemática moderna, rápida y segura. Cambia fácilmente entre el modo básico y científico con una interfaz premium y glassmorphic.">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/AnderCMD/Calculadora/main/Resources/Icons/Logo-Blanco.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://andercmd.github.io/Calculadora/">
+    
+    <!-- Favicon -->
     <link rel="shortcut icon" href="Resources/Icons/Icono-Blanco.icon" type="image/x-icon">
-    <!-- Font Awesome 6 -->
+    
+    <!-- Font Awesome 6 Icons -->
     <link rel="stylesheet" href="Resources/FontAwesome6/css/all.css">
-    <!-- CSS -->
+    
+    <!-- Custom CSS Stylesheet -->
     <link rel="stylesheet" href="CSS/Inicio.css">
+
+    <!-- Structured Data (JSON-LD) for Search Engine Optimization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Calculadora Científica y Básica Inteligente",
+      "operatingSystem": "All",
+      "applicationCategory": "MathApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Ander González",
+        "url": "https://github.com/AnderCMD"
+      },
+      "description": "Una calculadora científica y básica de alto rendimiento con diseño moderno, interactiva y segura."
+    }
+    </script>
 </head>
 <body>
-    <section class="Contenedor">
-        <!-- Header -->
+    <div class="Contenedor">
+        <!-- Header Section -->
         <header>
             <div class="Logo">
-                <img src="Resources/Icons/Logo-Blanco.png" alt="Logo">
+                <img src="Resources/Icons/Logo-Blanco.png" alt="Logo de la Calculadora">
+                <div class="brand-text">
+                    <h1>CALCULADORA</h1>
+                    <span class="sub-brand">EDICIÓN RENOVADA</span>
+                </div>
             </div>
-            <div class="Redes">
-                <a href="https://github.com/AnderCMD"><i class="fa-brands fa-github"></i></a>
+            <div class="Header-Right">
+                <div class="status-badge" id="headerStatusBadge">Básica</div>
+                <div class="Redes">
+                    <a href="https://github.com/AnderCMD" target="_blank" rel="noopener noreferrer" aria-label="Perfil de GitHub de AnderCMD">
+                        <i class="fa-brands fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
             </div>
         </header>
         
-        <!-- Calculadora -->
-        <div class="Calculadoras">
-            <form name="Calculadora">
-                <input type="text" class="Resultado" name="Resultado" id="Resultado" placeholder="0" disabled>
-                <div class="Teclas">
-                    <input type="button" value="C" class="Clear" onclick="Resultado.value = ''">
-                    <input type="button" value="←" onclick="Calculadora.Resultado.value = Calculadora.Resultado.value.slice(0, -1)">
-                    <input type="button" value="÷" onclick="Resultado.value += '÷'">
-                    <input type="button" value="×" onclick="Resultado.value += '×'">
-                    <input type="button" value="7" onclick="Resultado.value += '7'">
-                    <input type="button" value="8" onclick="Resultado.value += '8'">
-                    <input type="button" value="9" onclick="Resultado.value += '9'">
-                    <input type="button" value="-" onclick="Resultado.value += '-'">
-                    <input type="button" value="4" onclick="Resultado.value += '4'">
-                    <input type="button" value="5" onclick="Resultado.value += '5'">
-                    <input type="button" value="6" onclick="Resultado.value += '6'">
-                    <input type="button" value="+" onclick="Resultado.value += '+'">
-                    <input type="button" value="1" onclick="Resultado.value += '1'">
-                    <input type="button" value="2" onclick="Resultado.value += '2'">
-                    <input type="button" value="3" onclick="Resultado.value += '3'">
-                    <input type="button" value="0" class="Cero" onclick="Resultado.value += '0'">
-                    <input type="button" value="." onclick="Resultado.value += '.'">
-                    <input type="button" value="=" class="Igual" onclick="Calcular()">
+        <!-- Main Calculator Section -->
+        <main class="Calculadoras">
+            <div class="calculator-card" id="calculatorCard">
+                <!-- Mode Switcher -->
+                <div class="mode-selector">
+                    <div class="mode-highlight" id="modeHighlight"></div>
+                    <button class="mode-btn active" id="btnModeBasic" aria-label="Cambiar a Calculadora Básica">Básica</button>
+                    <button class="mode-btn" id="btnModeScientific" aria-label="Cambiar a Calculadora Científica">Científica</button>
                 </div>
-            </form>
-        </div>
+
+                <!-- Display Unit -->
+                <div class="display-container">
+                    <div class="display-history" id="displayHistory" aria-live="polite"></div>
+                    <input type="text" class="display-input" id="displayInput" placeholder="0" readonly aria-label="Resultado de la operación">
+                </div>
+                
+                <!-- Layout holding grids -->
+                <div class="calculator-layout">
+                    <!-- Scientific panel (left side) -->
+                    <div class="panel-scientific" id="panelScientific">
+                        <button class="calc-btn btn-scientific" data-val="sin(" aria-label="Seno">sin</button>
+                        <button class="calc-btn btn-scientific" data-val="cos(" aria-label="Coseno">cos</button>
+                        <button class="calc-btn btn-scientific" data-val="tan(" aria-label="Tangente">tan</button>
+                        
+                        <button class="calc-btn btn-scientific" data-val="ln(" aria-label="Logaritmo natural">ln</button>
+                        <button class="calc-btn btn-scientific" data-val="log(" aria-label="Logaritmo base 10">log</button>
+                        <button class="calc-btn btn-scientific" data-val="^" aria-label="Elevar a potencia">^</button>
+                        
+                        <button class="calc-btn btn-scientific" data-val="√(" aria-label="Raíz cuadrada">√</button>
+                        <button class="calc-btn btn-scientific" data-val="π" aria-label="Número Pi">π</button>
+                        <button class="calc-btn btn-scientific" data-val="e" aria-label="Número de Euler">e</button>
+                        
+                        <button class="calc-btn btn-scientific" data-val="(" aria-label="Paréntesis de apertura">(</button>
+                        <button class="calc-btn btn-scientific" data-val=")" aria-label="Paréntesis de cierre">)</button>
+                        <button class="calc-btn btn-scientific" data-val="!" aria-label="Factorial">!</button>
+                    </div>
+
+                    <!-- Standard panel (right side) -->
+                    <div class="panel-standard">
+                        <button class="calc-btn btn-danger" data-action="clear" aria-label="Limpiar pantalla">C</button>
+                        <button class="calc-btn btn-operator" data-action="backspace" aria-label="Borrar último caracter">←</button>
+                        <button class="calc-btn btn-operator" data-val="÷" aria-label="Dividir">÷</button>
+                        <button class="calc-btn btn-operator" data-val="×" aria-label="Multiplicar">×</button>
+                        
+                        <button class="calc-btn" data-val="7">7</button>
+                        <button class="calc-btn" data-val="8">8</button>
+                        <button class="calc-btn" data-val="9">9</button>
+                        <button class="calc-btn btn-operator" data-val="-" aria-label="Restar">-</button>
+                        
+                        <button class="calc-btn" data-val="4">4</button>
+                        <button class="calc-btn" data-val="5">5</button>
+                        <button class="calc-btn" data-val="6">6</button>
+                        <button class="calc-btn btn-operator" data-val="+" aria-label="Sumar">+</button>
+                        
+                        <button class="calc-btn" data-val="1">1</button>
+                        <button class="calc-btn" data-val="2">2</button>
+                        <button class="calc-btn" data-val="3">3</button>
+                        <button class="calc-btn btn-accent row-span-2" data-action="calculate" aria-label="Calcular resultado">=</button>
+                        
+                        <button class="calc-btn span-2" data-val="0">0</button>
+                        <button class="calc-btn" data-val=".">.</button>
+                    </div>
+                </div>
+            </div>
+        </main>
         
-        <!-- Footer --> 
+        <!-- Footer Section --> 
         <footer>
-            <p>Funcion de cambio de año</p>
+            <div class="footer-content">
+                <p class="footer-left">© Copyright <span id="currentYear"></span> | <a href="https://github.com/AnderCMD" target="_blank" rel="noopener noreferrer">AnderCMD</a></p>
+                <div class="footer-right">
+                    <span class="footer-tag"><i class="fa-solid fa-shield-halved"></i> Código Seguro</span>
+                    <span class="footer-separator">•</span>
+                    <span class="footer-tag"><i class="fa-solid fa-code"></i> HTML5 & CSS3 & ES6</span>
+                </div>
+            </div>
         </footer>
-    </section>
+    </div>
         
-    <!-- Scripts -->
-
-    <!-- Cambiar año del copyright -->
-    <script>
-        const fecha = new Date();
-        const año = fecha.getFullYear();
-        document.querySelector('footer p').innerHTML = `© 2023 - ${año} | <a href="https://github.com/AnderCMD" target="_blank">AnderCMD</a>`;
-    </script>
-
-    <script src="JavaScript/Calculadora.js"></script>
+    <!-- Main JS Application Bundle (Module based) -->
+    <script type="module" src="JavaScript/Calculadora.js"></script>
 </body>
 </html>

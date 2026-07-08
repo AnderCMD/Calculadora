@@ -1,187 +1,576 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --Color-1: #121212;
-    --Color-2: #1F1F1F;
-    --Color-3: #ffffff;
-    --Color-4: #000000;
-    --Color-5: rgb(218, 218, 218);
+    /* Theme Colors (Dark Theme Palette) */
+    --bg-primary: #080710;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-hover: rgba(255, 255, 255, 0.2);
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #cbd5e1;
+    --text-muted: #64748b;
+    
+    /* Brand Accent Colors */
+    --accent-glow: rgba(99, 102, 241, 0.2);
+    --btn-number-bg: rgba(255, 255, 255, 0.05);
+    --btn-number-hover: rgba(255, 255, 255, 0.12);
+    --btn-operator-bg: rgba(99, 102, 241, 0.15);
+    --btn-operator-hover: rgba(99, 102, 241, 0.3);
+    --btn-accent-bg: #4f46e5;
+    --btn-accent-hover: #6366f1;
+    --btn-danger-bg: rgba(239, 68, 68, 0.15);
+    --btn-danger-hover: rgba(239, 68, 68, 0.3);
+    
+    /* Scientific Key Accents */
+    --btn-sci-bg: rgba(14, 116, 144, 0.15);
+    --btn-sci-hover: rgba(14, 116, 144, 0.35);
+    --btn-sci-text: #38bdf8;
+    
+    /* Animation & Transitions */
+    --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 body {
-    background: url('../Resources/Backgrounds/cool-background.png') no-repeat center center fixed;
-    background-size: cover;
+    background: radial-gradient(circle at 50% 50%, #17153b 0%, #03001e 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: var(--text-primary);
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Background Animated Blobs */
+body::before, body::after {
+    content: '';
+    position: absolute;
+    width: 45vw;
+    height: 45vw;
+    max-width: 600px;
+    max-height: 600px;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -1;
+    opacity: 0.3;
+    pointer-events: none;
+    animation: pulse 12s infinite alternate ease-in-out;
+}
+
+body::before {
+    background: #4f46e5;
+    top: 10%;
+    left: -10%;
+}
+
+body::after {
+    background: #06b6d4;
+    bottom: 10%;
+    right: -10%;
+    animation-delay: 6s;
+}
+
+@keyframes pulse {
+    0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+    100% { transform: translate(5vw, 5vh) scale(1.2) rotate(180deg); }
+}
+
+/* Base Layout Container */
 .Contenedor {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
+    min-height: 100vh;
 }
 
-/* Header */
+/* Header Styling with glassmorphism and subtle glowing bottom border */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .5em 1%;
-    background-color: var(--Color-2);
-    box-shadow: 0 0 .5em var(--Color-3);
+    padding: 1rem 2.5rem;
+    background: rgba(15, 23, 42, 0.2);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+header .Logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
 }
 
 header .Logo img {
-    width: 15%;
-    text-shadow: 0 0 .5em var(--Color-3);
+    height: 38px;
+    width: auto;
+    filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.6));
+    transition: transform var(--transition-normal) ease;
+}
+
+header .Logo:hover img {
+    transform: rotate(15deg) scale(1.1);
+}
+
+header .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+header .Logo h1 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.05em;
+}
+
+header .sub-brand {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: #38bdf8;
+    text-transform: uppercase;
+}
+
+header .Header-Right {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+header .status-badge {
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 0.3rem 0.8rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #38bdf8;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.05);
 }
 
 header .Redes a {
-    color: var(--Color-5);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
     text-decoration: none;
-    transition: all .3s ease-in-out;
+}
+
+header .Redes a i {
+    font-size: 1.2rem;
 }
 
 header .Redes a:hover {
-    color: var(--Color-3);
-    text-shadow: 0 0 .5em var(--Color-3);
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
 }
 
-header .Redes i {
-    font-size: 2em;
-}
-
-/* Calculadora */
+/* Main Area - Calculator Wrapper */
 .Calculadoras {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1em 0;
-    margin: 1em;
+    padding: 2.5rem 1.5rem;
 }
 
-.Calculadoras form {
+/* Calculator Container */
+.calculator-card {
+    background: rgba(10, 10, 15, 0.45);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 28px;
+    width: 100%;
+    max-width: 400px;
+    padding: 1.75rem;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 
+                inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    transition: max-width var(--transition-slow) cubic-bezier(0.19, 1, 0.22, 1);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 25%;
-    border-radius: 1em;
-    padding: 1em;
-    box-shadow: 0 0 .5em var(--Color-3);
-    background-color: var(--Color-2);
+    gap: 1.5rem;
 }
 
-.Calculadoras form input.Resultado {
-    width: 100%;
-    height: 3em;
-    margin-bottom: 1em;
+/* When scientific mode is active, make the card wider */
+.calculator-card.mode-scientific {
+    max-width: 720px;
+}
+
+/* Mode Switcher Header inside Card */
+.mode-selector {
+    display: flex;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 4px;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.mode-btn {
+    flex: 1;
+    background: none;
     border: none;
-    border-radius: .5em;
-    padding: 0 .5em;
-    font-size: 1.5em;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
     font-weight: 600;
-    text-align: right;
-    color: var(--Color-3);
-    background-color: var(--Color-1);
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    z-index: 2;
+    transition: color var(--transition-fast);
+    text-align: center;
 }
 
-.Calculadoras form .Teclas {
+.mode-btn.active {
+    color: var(--text-primary);
+}
+
+.mode-highlight {
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.4) 0%, rgba(99, 102, 241, 0.4) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 10px;
+    z-index: 1;
+    transition: transform var(--transition-normal) cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Slide the switcher highlight to the right */
+.calculator-card.mode-scientific .mode-highlight {
+    transform: translateX(100%);
+}
+
+/* Screen Display */
+.display-container {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    min-height: 125px;
+    word-break: break-all;
+    box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.display-history {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    min-height: 1.5em;
+    margin-bottom: 0.35rem;
+    letter-spacing: 0.05em;
+    transition: var(--transition-fast);
+    opacity: 0.8;
+}
+
+.display-input {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    width: 100%;
+    border: none;
+    background: none;
+    text-align: right;
+    outline: none;
+    caret-color: var(--btn-accent-hover);
+    padding: 0;
+}
+
+/* Grid Layout container holding Scientific and Standard panels */
+.calculator-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    transition: all var(--transition-slow) cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.calculator-card.mode-scientific .calculator-layout {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 1rem;
+}
+
+/* Keypad Panels */
+.panel-scientific {
+    display: none;
+}
+
+/* When active, show the scientific panel */
+.calculator-card.mode-scientific .panel-scientific {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 0.6rem;
+    animation: slideIn var(--transition-normal) forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-15px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+.panel-standard {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: .5em;
+    grid-auto-rows: 1fr;
+    gap: 0.6rem;
     width: 100%;
 }
 
-.Calculadoras form .Teclas input {
-    width: 100%;
-    height: 3em;
-    border: none;
-    border-radius: .5em;
-    font-size: 1.5em;
+/* Style for Calculator Buttons with responsive height aspect */
+.calc-btn {
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    height: clamp(44px, 5.5vh, 56px);
+    font-size: 1.15rem;
     font-weight: 600;
-    color: var(--Color-3);
-    background-color: var(--Color-1);
-    transition: all .3s ease-in-out;
+    cursor: pointer;
+    color: var(--text-primary);
+    background: var(--btn-number-bg);
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.Calculadoras form .Teclas input:hover {
-    background-color: var(--Color-4);
-    box-shadow: 0 0 .5em var(--Color-3);
-    text-shadow: 0 0 .5em var(--Color-3);
+.calc-btn:hover {
+    background: var(--btn-number-hover);
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
 }
 
-.Calculadoras form .Teclas input.Cero {
-    grid-column: 1/3;
+.calc-btn:active {
+    transform: translateY(1px) scale(0.96);
 }
 
-.Calculadoras form .Teclas input.Igual {
+/* Modifier buttons styling */
+.calc-btn.btn-operator {
+    background: var(--btn-operator-bg);
+    color: #a5b4fc;
+    font-size: 1.3rem;
+    border-color: rgba(99, 102, 241, 0.2);
+}
+.calc-btn.btn-operator:hover {
+    background: var(--btn-operator-hover);
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.2);
+}
+
+.calc-btn.btn-accent {
+    background: var(--btn-accent-bg);
+    border-color: var(--btn-accent-hover);
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+}
+.calc-btn.btn-accent:hover {
+    background: var(--btn-accent-hover);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+}
+
+.calc-btn.btn-danger {
+    background: var(--btn-danger-bg);
+    color: #f87171;
+    border-color: rgba(239, 68, 68, 0.2);
+}
+.calc-btn.btn-danger:hover {
+    background: var(--btn-danger-hover);
+    border-color: rgba(239, 68, 68, 0.4);
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+}
+
+.calc-btn.btn-scientific {
+    background: var(--btn-sci-bg);
+    color: var(--btn-sci-text);
+    font-size: 1rem;
+    border-color: rgba(14, 116, 144, 0.2);
+}
+.calc-btn.btn-scientific:hover {
+    background: var(--btn-sci-hover);
+    border-color: rgba(14, 116, 144, 0.4);
+    box-shadow: 0 0 10px rgba(14, 116, 144, 0.25);
+}
+
+/* Custom Spans & Spacers */
+.calc-btn.span-2 {
+    grid-column: span 2;
+}
+
+.calc-btn.row-span-2 {
+    grid-row: span 2;
     height: 100%;
-    grid-column: 4/4;
-    grid-row: 4/6;
 }
 
-/* .Calculadoras form .Teclas input.Clear {
-    grid-column: 1/3;
-} */
-
-/* Footer */
+/* Footer Section with glassy layout and pulsing animation on text hover */
 footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1em 0;
-    background-color: var(--Color-2);
-    font-weight: 600;
-    font-size: 1.2em;
-    color: var(--Color-5);
-    box-shadow: 0 0 .5em var(--Color-3);
+    padding: 1.25rem 0;
+    background: rgba(15, 23, 42, 0.25);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid var(--border-color);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2.5rem;
 }
 
 footer a {
-    color: var(--Color-5);
+    color: #a5b4fc;
     text-decoration: none;
-    transition: all .3s ease-in-out;
+    font-weight: 600;
+    transition: var(--transition-fast);
+    display: inline-block;
 }
 
 footer a:hover {
-    color: var(--Color-3);
-    text-shadow: 0 0 .5em var(--Color-3);
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(165, 180, 252, 0.8);
+    transform: scale(1.05);
 }
 
-/* Media Queries */
-@media screen and (max-width: 1024px) {
-    header .Logo img {
-        width: 20%;
+.footer-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    padding: 0.3rem 0.7rem;
+    border-radius: 8px;
+    letter-spacing: 0.02em;
+}
+
+.footer-tag i {
+    color: #6366f1;
+}
+
+.footer-separator {
+    color: var(--border-color);
+    margin: 0 0.25rem;
+}
+
+/* Media Queries for Mobile responsiveness */
+@media (max-width: 650px) {
+    header {
+        padding: 1rem 1.5rem;
+    }
+    
+    header .Logo h1 {
+        font-size: 1.2rem;
     }
 
-    .Calculadoras form {
-        width: 50%;
+    .Calculadoras {
+        padding: 1.5rem 1rem;
+    }
+
+    .calculator-card {
+        padding: 1.25rem;
+        gap: 1.25rem;
+        max-width: 360px;
+    }
+
+    .calculator-card.mode-scientific {
+        max-width: 360px;
+    }
+
+    /* Stack scientific panel on top or bottom of standard panel on mobile */
+    .calculator-card.mode-scientific .calculator-layout {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    .calculator-card.mode-scientific .panel-scientific {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 1fr;
+        gap: 0.5rem;
+    }
+
+    .calc-btn {
+        height: 46px;
+        font-size: 1.1rem;
+        border-radius: 10px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 0 1rem;
+        text-align: center;
     }
 }
 
-@media screen and (max-width: 768px) {
-    .Calculadoras form {
-        width: 65%;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    header .Logo img {
-        width: 40%;
+@media (max-width: 380px) {
+    header .Logo h1 {
+        display: none; /* Hide brand name on extremely narrow viewports */
     }
 
-    .Calculadoras form {
-        width: 100%;
+    header {
+        padding: 0.75rem 1rem;
     }
 
-    footer {
-        font-size: 0.8em;
+    .calculator-card {
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .calc-btn {
+        height: 42px;
+        font-size: 1rem;
     }
 }

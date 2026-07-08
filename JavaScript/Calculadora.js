@@ -1,20 +1,11 @@
-function Calcular() {
-    let Entrada = document.Calculadora.Resultado.value;
-    let Resultado;
+/**
+ * Main Application Entry Point
+ * Bootstraps the Calculator User Interface module.
+ */
 
-    if (Entrada.includes('+')) {
-        let Numeros = Entrada.split('+');
-        Resultado = parseFloat(Numeros[0]) + parseFloat(Numeros[1]);
-    } else if (Entrada.includes('-')) {
-        let Numeros = Entrada.split('-');
-        Resultado = parseFloat(Numeros[0]) - parseFloat(Numeros[1]);
-    } else if (Entrada.includes('×')) {
-		let Numeros = Entrada.split('×');
-		Resultado = parseFloat(Numeros[0]) * parseFloat(Numeros[1]);
-	} else if (Entrada.includes('÷')) {
-		let Numeros = Entrada.split('÷');
-		Resultado = parseFloat(Numeros[0]) / parseFloat(Numeros[1]);
-	}
+import { CalculatorUI } from './modules/calculator-ui.js';
 
-    document.Calculadora.Resultado.value = Resultado;
-}
+document.addEventListener('DOMContentLoaded', () => {
+    const app = new CalculatorUI();
+    app.init();
+});
